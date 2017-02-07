@@ -4,6 +4,7 @@
 #include "stdafx.h"
 
 #include <iostream>
+#include "utilities.h"
 #include "nr3.h"
 #include "ludcmp.h"
 
