@@ -67,6 +67,9 @@ int main()
 	// display the soluiton and relevant. information on the screen
 	util::print(x_pont_sol, "solution:");
 
+	//util::print(myStuff.u, "U-vec:");
+	util::print(myStuff.v, "V-vec:");
+	util::print(myStuff.w, "W-vec:");
 
 	// terminate the program
 	system("pause");
