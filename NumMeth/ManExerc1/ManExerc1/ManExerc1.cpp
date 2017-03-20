@@ -93,7 +93,9 @@ int main()
 
 #pragma endregion
 
-	
+
+
+
 #pragma region CalError
 	// Calculate error ||Aq-z||
 	auto q2 = A*q;
