@@ -30,6 +30,8 @@ This class is to handle tables of data this invilves:
 #define LEFTINT		(char) 195
 #define RIGHTINT	(char) 180
 
+#define DEFAULT_COL_WITH 10
+
 using namespace std;
 
 class TableHandle
@@ -67,6 +69,8 @@ private:
 	string rightText(string sText, unsigned int uiWith);
 	string leftText(string sText, unsigned int uiWith);
 	string leftText(double dNum, unsigned int uiWith);
+
+	vector<unsigned int> uiGetColWiths();
 
 	vector<vector<double> > vvdTable; 
 	vector<string> vsColNames;

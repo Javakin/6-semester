@@ -17,17 +17,18 @@ using namespace std;
 
 int main()
 {
-	vector<string> vsColName = {"Time", "x0", "f", "g","j"};
+	TableHandle tab(vector<string>{"Time", "x0", "f", "g", "j"});
+	//tab.print("Printing Tab#1");
 
-	for (string s : vsColName)
-		cout << s << "\n";
-	cout << endl;
-
-	TableHandle tab(vsColName);
-	tab.print("Printing Tab#1");
-
-	vector<double> vdR1 = { 1.05, 151.57878 ,1, 884.8, 15.58 };
+	vector<double> vdR1 = { 1.05, 1558758481.123456789 ,1, 884.8, 15.58 };
 	tab.addRow(vdR1);
+	tab.addRow(vdR1);
+	tab.addRow(vdR1);
+	tab.addRow(vdR1);
+	tab.addRow(vdR1);
+	tab.addRow(vdR1);
+
+
 	tab.print("Printing Tab#2");
 
 

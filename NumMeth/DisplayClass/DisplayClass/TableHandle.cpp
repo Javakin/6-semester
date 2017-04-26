@@ -39,7 +39,7 @@ void TableHandle::print()
 {
 	//todo: caclulate the optimal initial values 
 	//initial values
-	vector<unsigned int> vuiColWith(vsColNames.size(), 10);
+	vector<unsigned int> vuiColWith = uiGetColWiths();
 
 	// calculate the total with of the table
 	unsigned int uiTabWith = vuiColWith.size() + 1;
@@ -70,13 +70,21 @@ void TableHandle::print()
 	// ----------------------------------------------------------------------------------------------
 	// print data
 	// ----------------------------------------------------------------------------------------------
+	cout << LEFTINT;
+	for (unsigned int i = 0; i < vuiColWith.size() - 1; i++) {
+		cout << setfill(FLATBAR) << setw(vuiColWith[i] + 1) << CENTINT;
+	}
+	cout << setfill(FLATBAR) << setw(vuiColWith[vuiColWith.size() - 1] + 1) << RIGHTINT << endl;
+
 	for (unsigned int uiRow = 0; uiRow < vvdTable.size(); uiRow++) {
 		// make the line
-		cout << LEFTINT;
-		for (unsigned int i = 0; i < vuiColWith.size() - 1; i++) {
-			cout << setfill(FLATBAR) << setw(vuiColWith[i] + 1) << CENTINT;
+		if (uiRow != 0) {
+			cout << LEFTINT;
+			for (unsigned int i = 0; i < vuiColWith.size() - 1; i++) {
+				cout << setfill(FLATBAR) << setw(vuiColWith[i] + 1) << CENTINT;
+			}
+			cout << setfill(FLATBAR) << setw(vuiColWith[vuiColWith.size() - 1] + 1) << RIGHTINT << endl;
 		}
-		cout << setfill(FLATBAR) << setw(vuiColWith[vuiColWith.size() - 1] + 1) << RIGHTINT << endl;
 
 		//print a row
 		cout << VERTBAR;
@@ -133,4 +141,27 @@ string TableHandle::leftText(double dNum, unsigned int uiWith)
 	}
 
 	return sReturn;
+}
+
+vector<unsigned int> TableHandle::uiGetColWiths()
+{
+	// setup variables
+	vector<unsigned int> vuiRes;
+	string sText;
+	
+
+	// for each colum
+	for (unsigned int uiCol = 0; uiCol < vsColNames.size(); uiCol++) {
+		// for each element
+		unsigned int uiColWith = DEFAULT_COL_WITH;
+
+		for (unsigned int uiCell = 0; uiCell < vvdTable.size(); uiCell++) {
+			if (to_string(vvdTable[uiCell][uiCol]).length() > uiColWith)
+				uiColWith = to_string(vvdTable[uiCell][uiCol]).length();
+		}
+		vuiRes.push_back(uiColWith);
+	}
+
+	// return the resoult
+	return vuiRes;
 }
