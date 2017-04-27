@@ -112,15 +112,25 @@ void TableHandle::print(string description)
 	print();
 }
 
-void TableHandle::exportTable(string type)
+void TableHandle::exportTableCSV(string sName)
 {
 	ofstream myfile;
-	myfile.open("example.csv");
-	myfile << "This is the first cell in the first column.\n";
-	myfile << "a,b,c,\n";
-	myfile << "c,s,v,\n";
-	myfile << "1,2,3.456\n";
-	myfile << "semi;colon";
+	myfile.open(sName + ".csv");
+
+	myfile << sTabDesc;
+	myfile << "\n";
+
+	for (unsigned int i = 0; i < vsColNames.size(); i++) {
+		myfile << vsColNames[i];
+		(i==vsColNames.size()-1) ? myfile << "\n" : myfile << ",";
+	}
+	for (vector<double> vdRow: vvdTable) {
+		for (unsigned int i = 0; i < vsColNames.size(); i++) {
+			myfile << to_string(vdRow[i]);
+			(i == vsColNames.size() - 1) ? myfile << "\n" : myfile << ",";
+		}
+	}
+
 	myfile.close();
 }
 

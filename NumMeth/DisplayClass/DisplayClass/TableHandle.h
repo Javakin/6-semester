@@ -61,7 +61,7 @@ public:
 	void print(string description);
 
 	// exporting
-	void exportTable(string type);
+	void exportTableCSV(string sName);
 
 	// destructor
 	~TableHandle();

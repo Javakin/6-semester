@@ -29,10 +29,10 @@ int main()
 	tab.addRow(vdR1);
 
 
-	tab.print("Printing Tab#2");
+	tab.print("Numbers");
+	tab.exportTableCSV("Numbers");
 
-
-	system("pause");
+	//system("pause");
 	return 0;
 }
 
