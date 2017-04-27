@@ -13,6 +13,8 @@ This class is to handle tables of data this invilves:
 #include <iomanip>
 #include <vector>
 #include <string>
+#include <iostream>
+#include <fstream>
 
 
 // ascii definitions
