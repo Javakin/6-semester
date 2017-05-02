@@ -25,11 +25,11 @@ int main()
 	// *************************************************
 	// part one
 	// *************************************************
-
+	const int numOfSamples = 20;
 	const Int nvar = 2; 
 	const Doub atol = 1.0e-6, rtol = atol, h1 = 0.01, hmin = 0.0, x1 = 0.0, x2 = 1.0; 
 	VecDoub ystart(nvar); ystart[0] = 1.0; ystart[1] = 1.0; 
-	Output out(20);
+	Output out(numOfSamples);
 	rhs_van d; 
 	
 	Odeint<StepperDopr5<rhs_van> > ode(ystart, x1, x2, atol, rtol, h1, hmin, out, d); 
