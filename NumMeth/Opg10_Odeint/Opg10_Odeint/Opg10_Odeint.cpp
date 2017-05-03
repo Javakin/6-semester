@@ -7,6 +7,9 @@
 #include "odeint.h"
 #include "stepper.h"
 #include "StepperDopr5.h"
+#include "TableHandle.h"
+#include <vector>
+#include <string>
 
 using namespace std;
 
@@ -35,18 +38,24 @@ int main()
 	Odeint<StepperDopr5<rhs_van> > ode(ystart, x1, x2, atol, rtol, h1, hmin, out, d); 
 	ode.integrate();
 
-	// print thw putput
+	// print the output
+	TableHandle part1(vector<string>{ "t_i", "y1_i", "y2_i" });
+	vector<double> vdRow(3);
 
 	cout << "printing.\n";
 	for (Int i = 0; i < out.count; i++) {
-		cout << out.xsave[i] << " " << out.ysave[0][i] << " " << out.ysave[1][i] << endl;
+		vdRow[0] = (double)out.xsave[i];
+		vdRow[1] = (double)out.ysave[0][i];
+		vdRow[2] = (double)out.ysave[1][i];
+		part1.addRow(vdRow);
 	}
 
+	part1.print("Printed part#1");
+	part1.exportTableCSV("exe1_20");
 
 	// *************************************************
 	// part two
 	// *************************************************
-
 
 	system("pause");
     return 0;
