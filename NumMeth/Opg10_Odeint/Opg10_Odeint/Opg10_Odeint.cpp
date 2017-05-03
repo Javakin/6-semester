@@ -7,9 +7,11 @@
 #include "odeint.h"
 #include "stepper.h"
 #include "StepperDopr5.h"
+#include "stepperross.h"
 #include "TableHandle.h"
 #include <vector>
 #include <string>
+#include "Opg10_Odeint.h"
 
 using namespace std;
 
@@ -51,11 +53,32 @@ int main()
 	}
 
 	part1.print("Printed part#1");
-	part1.exportTableCSV("exe1_20");
+	part1.exportTableCSV("exe1_"+ to_string(numOfSamples));
 
 	// *************************************************
 	// part two
 	// *************************************************
+
+	Output out2(numOfSamples);
+
+	Odeint<StepperRoss<rhs_van> > ode2(ystart, x1, x2, atol, rtol, h1, hmin, out2, d);
+	ode2.integrate();
+
+	// print the output
+	TableHandle part2(vector<string>{ "t_i", "y1_i", "y2_i" });
+
+	cout << "printing.\n";
+	for (Int i = 0; i < out2.count; i++) {
+		vdRow[0] = (double)out2.xsave[i];
+		vdRow[1] = (double)out2.ysave[0][i];
+		vdRow[2] = (double)out2.ysave[1][i];
+		part2.addRow(vdRow);
+	}
+
+	part2.print("Printed part#2");
+	part2.exportTableCSV("exe2_" + to_string(numOfSamples));
+
+
 
 	system("pause");
     return 0;

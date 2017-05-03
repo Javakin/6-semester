@@ -27,6 +27,9 @@
     <ClInclude Include="TableHandle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Opg10_Odeint.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

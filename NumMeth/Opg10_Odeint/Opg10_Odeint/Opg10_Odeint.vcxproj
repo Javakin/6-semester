@@ -147,6 +147,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Opg10_Odeint.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="TableHandle.h" />
     <ClInclude Include="targetver.h" />
